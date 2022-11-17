@@ -3,6 +3,7 @@
     <string name="send_btn_text">Send</string>
     <string name="chose_recipe_text">Chose recipe</string>
     <string name="chose_category_text">Chose category</string>
+    <string name="add_recipe_text">Add recipe</string>
     <string-array name="category">
         <item>Drinks</item>
         <item>Desserts</item>

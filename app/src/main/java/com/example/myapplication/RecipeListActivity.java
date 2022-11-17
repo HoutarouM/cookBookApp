@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +18,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
     ListView recipesListView;
     ArrayAdapter<Recipe> adapterRecipes;
+    Button addRecipeButton;
 
     private int categoryId;
 
@@ -42,6 +46,19 @@ public class RecipeListActivity extends AppCompatActivity {
             recipeActivityIntent.putExtra(CATEGORY_ID, categoryId);
 
             startActivity(recipeActivityIntent);
+        });
+
+        Button addRecipeButton = findViewById(R.id.add_recipe_button);
+
+        addRecipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText name = findViewById(R.id.editTextTextPersonName);
+                String recipeName = name.getText().toString();
+                Recipe r = new Recipe(recipeName, 1, "c", R.drawable.lemonade);
+                chosenRecipes.add(r);
+                adapterRecipes.notifyDataSetChanged();
+            }
         });
     }
 }
