@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
 //    adapter most pomiedzy danym i widokiem
 
+    public static final String CATEGORY_ID = "category_id";
+
     ListView categoryListView;
 
     @Override
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private void showNewActivity(int category) {
         Intent recipeListIntent = new Intent(this, RecipeListActivity.class);
 
-        recipeListIntent.putExtra("categoryId", category);
+        recipeListIntent.putExtra(CATEGORY_ID, category);
 
         startActivity(recipeListIntent);
     }

@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -9,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class RecipeListActivity extends AppCompatActivity {
-    ListView recipesListView;
+    public static final String RECIPE_ID = "recipe_id";
+    public static final String CATEGORY_ID = "category_id";
 
+    ListView recipesListView;
     ArrayAdapter<Recipe> adapterRecipes;
 
     private int categoryId;
@@ -22,7 +25,7 @@ public class RecipeListActivity extends AppCompatActivity {
 
         Bundle data = getIntent().getExtras();
         if (data != null) {
-            categoryId = data.getInt("categoryId", 0);
+            categoryId = data.getInt(MainActivity.CATEGORY_ID, 0);
         }
 
 
@@ -31,5 +34,14 @@ public class RecipeListActivity extends AppCompatActivity {
 
         recipesListView = findViewById(R.id.recipes_list_view);
         recipesListView.setAdapter(adapterRecipes);
+
+        recipesListView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Intent recipeActivityIntent = new Intent(RecipeListActivity.this, RecipeActivity.class);
+
+            recipeActivityIntent.putExtra(RECIPE_ID, i);
+            recipeActivityIntent.putExtra(CATEGORY_ID, categoryId);
+
+            startActivity(recipeActivityIntent);
+        });
     }
 }
