@@ -1,10 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,10 +24,16 @@ public class MainActivity extends AppCompatActivity {
         categoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String category = adapterView.getItemAtPosition(i).toString();
-
-                Toast.makeText(MainActivity.this, "Chosen category: " + category + " at intex: " + i, Toast.LENGTH_LONG).show();
+                showNewActivity(i);
             }
         });
+    }
+
+    private void showNewActivity(int category) {
+        Intent recipeListIntent = new Intent(this, RecipeListActivity.class);
+
+        recipeListIntent.putExtra("categoryId", category);
+
+        startActivity(recipeListIntent);
     }
 }
