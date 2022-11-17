@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Cook book</string>
+    <string name="send_btn_text">Send</string>
+    <string name="chose_recipe_text">Chose recipe</string>
+    <string name="chose_category_text">Chose category</string>
     <string-array name="category">
         <item>Drinks</item>
         <item>Desserts</item>
