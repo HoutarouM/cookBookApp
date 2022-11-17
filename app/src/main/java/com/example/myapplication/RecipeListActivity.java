@@ -29,7 +29,6 @@ public class RecipeListActivity extends AppCompatActivity {
         ArrayList<Recipe> chosenRecipes = RecipesRepo.recipesByCategory(categoryId);
         adapterRecipes = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, chosenRecipes);
 
-
         recipesListView = findViewById(R.id.recipes_list_view);
         recipesListView.setAdapter(adapterRecipes);
     }
