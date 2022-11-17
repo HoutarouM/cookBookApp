@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,5 +47,19 @@ public class RecipeActivity extends AppCompatActivity {
 
         titleView.setText(r.getName());
         componentsView.setText(r.getComponentsList());
+
+
+        sendButton.setOnClickListener(view -> {
+//            w manifescie dodac filtr do wysylania sms
+
+            Intent intent = new Intent();
+
+            intent.setAction(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_TEXT, r.getName() + " " + r.getComponentsList() + " Bonapeti");
+            intent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(intent, "title");
+            startActivity(shareIntent);
+        });
     }
 }
