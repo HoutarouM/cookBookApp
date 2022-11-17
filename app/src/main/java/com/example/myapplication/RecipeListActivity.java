@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RecipeListActivity extends AppCompatActivity {
+    ListView recipesListView;
+
     private int categoryId;
 
     @Override
@@ -17,6 +20,8 @@ public class RecipeListActivity extends AppCompatActivity {
         if (data != null) {
             categoryId = data.getInt("categoryId", 0);
         }
+
+        recipesListView = findViewById(R.id.recipes_list_view);
 
         Toast.makeText(this, "Category: " + categoryId, Toast.LENGTH_LONG).show();
     }
