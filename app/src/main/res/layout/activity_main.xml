@@ -22,9 +22,22 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:entries="@array/category"
+        app:layout_constraintBottom_toTopOf="@+id/add_recipe_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_activity_text_view">
+
+    </ListView>
+
+    <Button
+        android:id="@+id/add_recipe_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Add recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_activity_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/category_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
