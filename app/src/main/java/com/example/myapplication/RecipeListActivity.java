@@ -1,13 +1,17 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class RecipeListActivity extends AppCompatActivity {
     ListView recipesListView;
+
+    ArrayAdapter<Recipe> adapterRecipes;
 
     private int categoryId;
 
@@ -21,8 +25,12 @@ public class RecipeListActivity extends AppCompatActivity {
             categoryId = data.getInt("categoryId", 0);
         }
 
-        recipesListView = findViewById(R.id.recipes_list_view);
 
-        Toast.makeText(this, "Category: " + categoryId, Toast.LENGTH_LONG).show();
+        ArrayList<Recipe> chosenRecipes = RecipesRepo.recipesByCategory(categoryId);
+        adapterRecipes = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, chosenRecipes);
+
+
+        recipesListView = findViewById(R.id.recipes_list_view);
+        recipesListView.setAdapter(adapterRecipes);
     }
 }
